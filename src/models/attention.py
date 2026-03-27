@@ -6,10 +6,17 @@ class AttentionPooling(tf.keras.layers.Layer):
         super().__init__(**kwargs)
         self.score_dense = tf.keras.layers.Dense(1)
 
+    def build(self, input_shape):
+        self.score_dense.build(input_shape)
+        super().build(input_shape)
+
     def call(self, x):
         score = self.score_dense(x)
         weights = tf.nn.softmax(score, axis=1)
         return tf.reduce_sum(x * weights, axis=1)
+    
+    def get_config(self):
+        return super().get_config()
 
 def build_attention_model(vectorizer, vocab_size, embedding_dim, lstm_units, dropout_rate, num_classes):
     inputs = tf.keras.Input(shape=(1,), dtype=tf.string)
