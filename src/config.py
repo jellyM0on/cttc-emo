@@ -7,6 +7,7 @@ class TrainingConfig:
     raw_data_dir: Path = Path("data/raw")
     cache_subdir: str = "go_emotions_simplified"
     outputs_dir: Path = Path("outputs")
+    eval_outputs_dir: Path = Path("eval_outputs")
     saved_models_dir: Path = Path("saved_models")
     vocab_size: int = 10000
     sequence_length: int = 100
