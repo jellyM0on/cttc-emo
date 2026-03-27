@@ -11,7 +11,7 @@ Models:
 
 [GoEmotions](https://huggingface.co/datasets/google-research-datasets/go_emotions)
 - For this implementation, the `Simplified` subset was used
-- Dataset is labelled with 27 emotion labels + neutral. Since a single comment can express multiple emotions, labels are represented multi-hot vectors
+- Dataset is labelled with 27 emotion labels + neutral. Since a single comment can express multiple emotions, labels are represented as multi-hot vectors
 - Some limitations out of scope of this implementation are:
   - Class imbalance since some emotions appear much less frequently than others
   - Threshold-based decision making, because each output is predicted independently with sigmoid in the activation layer
@@ -27,7 +27,7 @@ Models:
   - Dropout
   - Dense(num_classes, sigmoid)
 
-- Attention Model
+- Attention
   - Text input
   - Text vectorization
   - Embedding layer
@@ -57,13 +57,12 @@ The models are evaluated using metrics such as: Accuracy, Precision, Recall, Mic
 - For local training,
 ```
 pipenv run python ./src/build_and_train_attention.py  
-
 ```
 - For local evaluation,
 ```
- pipenv run python -m eval.evaluate      
+pipenv run python -m eval.evaluate      
 
- or 
+or 
 
 pipenv run python -m eval.evaluate --model-name=attention
 ```
