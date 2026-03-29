@@ -66,3 +66,16 @@ or
 
 pipenv run python -m eval.evaluate --model-name=attention
 ```
+
+### Key Findings
+- Perfomance
+  - The Attention model is the overall top performer, with the highest Macro F1 and the best balance across emotion categories
+  - The Baseline model remains competitive, especially for precision, even though it is the simplest model
+  - The Stacked model performs the best for peak performance for a few emotions, but it performs the worst for overall balance  (lowest Macro F1)
+- Class Imbalance
+  - The models' performances are largely influenced by the frequency of the labels in the GoEmotions dataset 
+  - For the high-frequency emotions such as gratitude, amusement, and love, the F1 scores are consistently high (~0.75-0.90)
+  - For the lower-frequency emotions such as grief, pride, and relief, the F1 scores are close to zero for all models
+- Takeaways
+  - An attention-based model may be the best choice for real-world applications due to higher recall and better coverage
+  - Meaningful improvement will require dataset enhancements, not just architectural changes
